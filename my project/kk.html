@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Christmas Swathi</title>
+<style>
+/* ===== PAGE SETUP ===== */
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Georgia', serif;
+    background: #000; /* dark background for contrast */
+    height: 100vh;
+}
+
+/* ===== LEFT & RIGHT IMAGES WITH FLOAT EFFECT ===== */
+.split {
+    position: fixed;
+    top: 0;
+    width: 50%;
+    height: 100vh;
+    z-index: 1;
+    animation: float 6s ease-in-out infinite alternate;
+}
+
+.left { left: 0; }
+.right { right: 0; }
+
+.split img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 3px solid #fff5; /* subtle border glow */
+    box-shadow: 0 0 30px rgba(255,255,255,0.2);
+    border-radius: 10px;
+}
+
+/* ===== FLOAT ANIMATION ===== */
+@keyframes float {
+    0% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-20px) scale(1.02); }
+    100% { transform: translateY(0) scale(1); }
+}
+
+/* ===== STARS & HEARTS ===== */
+.effects {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+}
+
+/* ===== CENTER HEART ===== */
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 10;
+}
+
+/* ===== RAINBOW BRUSH HEART ===== */
+.heart-container {
+    width: 260px;
+    height: auto;
+    margin: 0 auto;
+}
+
+.heart-container svg path {
+    stroke-width: 14; /* thicker stroke for visibility */
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: transparent;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: draw 2s ease-in-out forwards, colorChange 5s linear infinite, pulse 1.5s infinite;
+    filter: drop-shadow(0 0 15px #fff) drop-shadow(0 0 25px currentColor);
+}
+
+/* ===== DRAW ANIMATION ===== */
+@keyframes draw {
+    to { stroke-dashoffset: 0; }
+}
+
+/* ===== RAINBOW COLOR ANIMATION ===== */
+@keyframes colorChange {
+    0% { stroke: #ff0000; }      /* bright red */
+    20% { stroke: #ff7f00; }     /* bright orange */
+    40% { stroke: #ffff00; }     /* bright yellow */
+    60% { stroke: #00ff00; }     /* bright green */
+    80% { stroke: #00bfff; }     /* bright blue */
+    100% { stroke: #ff00ff; }    /* bright magenta */
+}
+
+/* ===== PULSE ANIMATION ===== */
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* ===== NAME TEXT ===== */
+.name {
+    color: #ff4d6d;
+    font-size: 36px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 10px black;
+    margin-top: 20px;
+    pointer-events: none;
+}
+
+/* ===== FALLING HEARTS ===== */
+.bg-heart {
+    position: absolute;
+    top: -10%;
+    color: rgb(249, 53, 86);
+    pointer-events: none;
+    animation: fall linear forwards;
+    text-shadow: 0 0 8px pink, 0 0 15px rgba(255,182,193,0.5);
+}
+
+/* ===== STARS ===== */
+.star {
+    position: absolute;
+    width: 2px;
+    height: 140px;
+    background: linear-gradient(white, transparent);
+    transform: rotate(45deg);
+    animation: starMove linear infinite;
+}
+
+.star::before {
+    content: "+";
+    position: absolute;
+    top: -10px;
+    left: -6px;
+    font-size: 18px;
+    color: white;
+}
+
+/* ===== QUOTES BOX ===== */
+.quotes-box {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 400px;
+    padding: 20px;
+    background: rgba(255, 20, 147, 0.3);
+    border: 2px solid #ff1493;
+    border-radius: 15px;
+    text-align: left;
+    font-size: 18px;
+    font-style: italic;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 1px 1px 5px black;
+    z-index: 20;
+}
+
+/* ===== FALLING & STAR ANIMATIONS ===== */
+@keyframes fall {
+    0% { transform: translateY(0); opacity: 0; }
+    10% { opacity: 0.8; }
+    100% { transform: translateY(110vh); opacity: 0; }
+}
+
+@keyframes starMove {
+    0% { transform: translate(0,0) rotate(45deg); opacity: 1; }
+    100% { transform: translate(-1000px,1000px) rotate(45deg); opacity: 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- LEFT & RIGHT IMAGES -->
+<div class="split left">
+    <img src="WhatsApp Image 2025-12-24 at 3.49.37 PM.jpeg" alt="Left Image">
+</div>
+<div class="split right">
+    <img src="WhatsApp Image 2025-12-24 at 3.31.08 PM.jpeg" alt="Right Image">
+</div>
+
+<!-- STARS & FALLING HEARTS -->
+<div class="effects" id="effects"></div>
+
+<!-- CENTER HEART -->
+<div class="container">
+    <div class="heart-container">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <path d="M100,60 
+                     C 100,60 80,20 40,40 
+                     C 0,60 40,120 100,180 
+                     C 160,120 200,60 160,40 
+                     C 120,20 100,60 100,60" />
+        </svg>
+    </div>
+    <div class="name">Happy Christmas<br>Swathi</div>
+</div>
+
+<!-- QUOTES BOX -->
+<div class="quotes-box">
+    <p>My world is brighter because of you.</p>
+    <p>You are the heartbeat of my life.</p>
+    <p>Every moment with you is a blessing.</p>
+    <p>Love grows deeper with every smile of yours.</p>
+    <p>You make my heart dance with joy.</p>
+    <p>Being with you feels like home.</p>
+</div>
+
+<script>
+// ===== CREATE STARS =====
+const effects = document.getElementById("effects");
+for(let i=0; i<40; i++){
+    let star = document.createElement("div");
+    star.className = "star";
+    star.style.left = Math.random() * window.innerWidth + "px";
+    star.style.top = Math.random() * window.innerHeight + "px";
+    star.style.animationDuration = (Math.random()*3 + 2) + "s";
+    star.style.opacity = Math.random();
+    effects.appendChild(star);
+}
+
+// ===== CREATE FALLING HEARTS =====
+function createHeart() {
+    let heart = document.createElement("div");
+    heart.className = "bg-heart";
+    heart.innerHTML = "❤";
+    heart.style.left = Math.random() * window.innerWidth + "px";
+    heart.style.fontSize = Math.random() * 20 + 10 + "px";
+    heart.style.animationDuration = Math.random() * 3 + 4 + "s";
+    effects.appendChild(heart);
+    setTimeout(() => heart.remove(), 7000);
+}
+setInterval(createHeart, 200);
+
+// ===== HEART BURST ON CLICK =====
+document.querySelector(".heart-container svg").addEventListener("click", () => {
+    for(let i=0; i<20; i++){
+        setTimeout(createHeart, i*50);
+    }
+});
+</script>
+
+</body>
+</html>
